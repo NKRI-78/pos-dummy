@@ -26,35 +26,6 @@
 
 <body class="flex flex-col">
 
-    <nav class="flex justify-between items-center">
-
-        <!-- NAVIGATION -->
-        <div class="hidden lg:block navbar-c flex-1 rounded-md py-4 my-4 ml-2 mr-4">
-            <div class="container mx-auto flex justify-around items-center">
-                <a href="<?= base_url() ?>" class="<?=$uri->getSegment(1) === '' ? ' font-bold text-white' : 'text-white ' ?>">Home</a>
-                <a href="<?= base_url() ?>my-orders" class="<?=$uri->getSegment(1) === 'my-orders' ? ' font-bold text-white' : 'text-white' ?>">My Orders</a>
-                <a href="<?= base_url() ?>cart/1" class="<?=$uri->getSegment(1) === 'cart' ? ' font-bold text-white' : 'text-white' ?>">Cart</a>
-            </div>
-        </div>
-
-        <!-- Mobile Menu Button (Hidden on larger screens) -->
-        <div class="lg:hidden navbar-c rounded-md my-4 mr-12">
-            <div class="menu-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <nav class="mobile-menu z-50">
-                <ul class="menu-items">
-                    <li><a href="<?= base_url() ?>" class="text-sm">Home</a></li>
-                    <li><a href="<?= base_url() ?>my-orders" class="text-sm">My Orders</a></li>
-                    <li><a href="<?= base_url() ?>cart/1" class="text-sm">Cart</a></li>
-                </ul>
-            </nav>
-        </div>
-
-    </nav>
-
     <?= $this->renderSection('content') ?>
 
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2"></script>

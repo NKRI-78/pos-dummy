@@ -2,12 +2,10 @@
 
 use CodeIgniter\Router\RouteCollection;
 
-$routes->get('/', 'Home::index');
+// $routes->get('/', 'Home::index');
 
-$routes->get('/cart/(:num)', 'Cart::index/$1');
-
-$routes->get('/my-orders', 'Order::index');
+$routes->get('/', 'Order::index');
 
 $routes->get('/shipping/(:num)', 'Shipping::index/$1');
 
-$routes->get('/profile', 'Profile::index');
+$routes->get('/checkout/(:num)', 'Checkout::index/$1');
