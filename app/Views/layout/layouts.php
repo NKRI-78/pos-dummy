@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>POS - <?= $uri->getSegment(1) ?></title>
+    <title>POS - <?= ucfirst($uri->getSegment(1)) ?></title>
     <meta name="description" content="-">
     <meta name="keywords" content="-">
 
@@ -32,9 +32,9 @@
         <div class="hidden lg:block navbar-c flex-1 rounded-md py-4 my-4 ml-2 mr-4">
             <div class="container mx-auto flex justify-around items-center">
                 <a href="<?= base_url() ?>" class="<?=$uri->getSegment(1) === '' ? ' font-bold text-white' : 'text-white ' ?>">Home</a>
-                <a href="<?= base_url() ?>term-and-condition" class="<?=$uri->getSegment(1) === 'term-and-condition' ? ' font-bold text-white' : 'text-white' ?>">My Orders</a>
-                <a href="<?= base_url() ?>cart" class="<?=$uri->getSegment(1) === 'cart' ? ' font-bold text-white' : 'text-white' ?>">Cart</a>
-                <a href="<?= base_url() ?>how-to-use" class="<?=$uri->getSegment(1) === 'how-to-use' ? ' font-bold text-white' : 'text-white' ?>">Profile</a>
+                <a href="<?= base_url() ?>my-orders" class="<?=$uri->getSegment(1) === 'term-and-condition' ? ' font-bold text-white' : 'text-white' ?>">My Orders</a>
+                <a href="<?= base_url() ?>cart/1" class="<?=$uri->getSegment(1) === 'cart' ? ' font-bold text-white' : 'text-white' ?>">Cart</a>
+                <a href="<?= base_url() ?>profile" class="<?=$uri->getSegment(1) === 'how-to-use' ? ' font-bold text-white' : 'text-white' ?>">Profile</a>
             </div>
         </div>
 
@@ -48,9 +48,9 @@
             <nav class="mobile-menu z-50">
                 <ul class="menu-items">
                     <li><a href="<?= base_url() ?>" class="text-sm">Home</a></li>
-                    <li><a href="<?= base_url() ?>term-and-condition" class="text-sm">My Orders</a></li>
-                    <li><a href="<?= base_url() ?>about-us" class="text-sm">Cart</a></li>
-                    <li><a href="<?= base_url() ?>how-to-use" class="text-sm">Profile</a></li>
+                    <li><a href="<?= base_url() ?>my-orders" class="text-sm">My Orders</a></li>
+                    <li><a href="<?= base_url() ?>cart/1" class="text-sm">Cart</a></li>
+                    <li><a href="<?= base_url() ?>profile" class="text-sm">Profile</a></li>
                 </ul>
             </nav>
         </div>
@@ -67,27 +67,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <script>
-        document.addEventListener("DOMContentLoaded", async function() {
-            const menuToggle = document.querySelector('.menu-toggle');
-            const mobileMenu = document.querySelector('.mobile-menu');
-
-            menuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-            });
-
-            const urlIpAdress = 'https://api.ipify.org?format=json';
-            const baseUrl = 'https://api.tentangloker.com/api/v1';
-            try {
-                const responseIpAdress = await fetch(urlIpAdress);
-                const responseIpAddressData = await responseIpAdress.json();
-
-                const reponseLog = await axios.post(`${baseUrl}/logs`, {currentIp: responseIpAddressData.ip, message: `IP Address ${responseIpAddressData.ip} telah membuka website tentangloker.com`, data: {
-                    domain: 'https://tentangloker.com/', device: 'web'
-                }});
-            } catch(err) {
-                console.error(err.message)
-            }
-        });
+      
     </script>
 
     <?= $this->renderSection('script') ?>

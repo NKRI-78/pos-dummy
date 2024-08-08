@@ -12,17 +12,20 @@ class Cart extends BaseController
             [
                 "id" => "1",
                 "name" => "Ikan",
+                "price" => 10000,
                 "image" => "https://upload.wikimedia.org/wikipedia/commons/4/43/Javaen_barb.jpg"
             ],
             [
                 "id" => "2",
                 "name" => "Ayam",
-                "image" => "https://upload.wikimedia.org/wikipedia/commons/6/65/Chicken.jpg"
+                "price" => 15000,
+                "image" => "https://foto.kontan.co.id/FgVyravDpc8WNfTrxyfGlz1oaFY=/640x360/smart/2022/10/13/271827161p.jpg"
             ],
             [
                 "id" => "3",
                 "name" => "Sapi",
-                "image" => "https://upload.wikimedia.org/wikipedia/commons/1/16/Cow_female_black_white.jpg"
+                "price" => 25000,
+                "image" => "https://res.cloudinary.com/dk0z4ums3/image/upload/v1605524896/attached_image/mengolah-daging-sapi-dengan-benar.jpg"
             ]
         ];
 
@@ -37,6 +40,7 @@ class Cart extends BaseController
         $data = [
             "id" => $item['id'],
             "name" => $item['name'],
+            "price" => $item['price'],
             "image" => $item['image']
         ];
 
