@@ -23,7 +23,7 @@
             <div class="w-full md:w-2/6 bg-white rounded-lg shadow-md overflow-hidden">
                 
                 <div class="p-4 border-b border-gray-200">
-                    <h2 class="text-2xl font-semibold text-gray-800">Payment Methods</h2>
+                    <h2 class="text-2xl text-center font-semibold text-gray-800">Payment Methods</h2>
                 </div>
                 
                 <ul>

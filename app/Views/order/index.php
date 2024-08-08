@@ -9,7 +9,7 @@
       <div class="w-full md:w-3/5 bg-white p-4 rounded-lg shadow-md">
         <div class="flex justify-between">
           <h2 class="text-2xl font-semibold mb-4">My Orders</h2>
-          <img src="https://img.icons8.com/?size=100&id=6ozUksPEPg6G&format=png&color=000000" class="h-8" alt="ic-scan">
+          <img src="https://img.icons8.com/?size=100&id=6ozUksPEPg6G&format=png&color=000000" class="h-8 cursor-pointer" alt="ic-scan">
         </div>
 
         <div class="divide-y divide-gray-200">
@@ -27,9 +27,6 @@
             <!-- <button class="text-red-500 hover:text-red-700 ml-4">Remove</button> -->
           </div>
         </div>
-
-
-     
       </div>
 
       <div class="w-full md:w-2/5 bg-white p-4 rounded-lg shadow-md">
