@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="text-center">
-                        <a href="<?= base_url("checkout/1") ?>" class="w-full inline-block bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 focus:outline-none">Proceed</a>
+                        <a href="<?= base_url("checkout/1") ?>" class="w-full inline-block bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 focus:outline-none">Next</a>
                     </div>
                 </form>
 

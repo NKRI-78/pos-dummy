@@ -26,47 +26,49 @@
                     <h2 class="text-2xl text-center font-semibold text-gray-800">Payment Methods</h2>
                 </div>
                 
-                <ul>
-                    <li class="border-b border-gray-200 last:border-b-0">
-                        <div class="flex items-center p-4">
-                            <div class="flex-shrink-0">
-                                <img src="https://cdn3.iconfinder.com/data/icons/banks-in-indonesia-logo-badge/100/BCA-512.png" class="h-8" alt="ic-bca">
+                <form>
+                    <ul>
+                        <li class="border-b border-gray-200 last:border-b-0">
+                            <div class="flex items-center p-4">
+                                <div class="flex-shrink-0">
+                                    <img src="https://cdn3.iconfinder.com/data/icons/banks-in-indonesia-logo-badge/100/BCA-512.png" class="h-8" alt="ic-bca">
+                                </div>
+                                <div class="ml-4 flex-1">
+                                    <label for="payment-mandiri" class="text-gray-700">BCA</label>
+                                </div>
+                                <div class="ml-4 flex-shrink-0">
+                                    <input type="radio" id="payment-bni" name="delivery-option" class="payment-select form-radio text-blue-600">
+                                </div>
                             </div>
-                            <div class="ml-4 flex-1">
-                                <h3 class="text-lg font-medium text-gray-800">BCA</h3>
+                        </li>
+                        <li class="border-b border-gray-200 last:border-b-0">
+                            <div class="flex items-center p-4">
+                                <div class="flex-shrink-0">
+                                    <img src="https://cdn3.iconfinder.com/data/icons/banks-in-indonesia-logo-badge/100/Mandiri-512.png" class="h-8" alt="ic-mandiri">
+                                </div>
+                                <div class="ml-4 flex-1">
+                                    <label for="payment-mandiri" class="text-gray-700">MANDIRI</label>
+                                </div>
+                                <div class="ml-4 flex-shrink-0">
+                                <input type="radio" id="payment-mandiri" name="delivery-option" class="payment-select form-radio text-blue-600">
+                                </div>
                             </div>
-                            <div class="ml-4 flex-shrink-0">
-                                <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">SELECT</button>
+                        </li>
+                        <li class="border-b border-gray-200 last:border-b-0">
+                            <div class="flex items-center p-4">
+                                <div class="flex-shrink-0">
+                                    <img src="https://cdn3.iconfinder.com/data/icons/banks-in-indonesia-logo-badge/100/BNI-512.png" class="h-8" alt="ic-bni">
+                                </div>
+                                <div class="ml-4 flex-1">
+                                    <label for="payment-bni" class="text-gray-700">BNI</label>
+                                </div>
+                                <div class="ml-4 flex-shrink-0">
+                                    <input type="radio" id="payment-bni" name="delivery-option" class="payment-select form-radio text-blue-600">
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="border-b border-gray-200 last:border-b-0">
-                        <div class="flex items-center p-4">
-                            <div class="flex-shrink-0">
-                                <img src="https://cdn3.iconfinder.com/data/icons/banks-in-indonesia-logo-badge/100/Mandiri-512.png" class="h-8" alt="ic-mandiri">
-                            </div>
-                            <div class="ml-4 flex-1">
-                                <h3 class="text-lg font-medium text-gray-800">MANDIRI</h3>
-                            </div>
-                            <div class="ml-4 flex-shrink-0">
-                                <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">SELECT</button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="border-b border-gray-200 last:border-b-0">
-                        <div class="flex items-center p-4">
-                            <div class="flex-shrink-0">
-                                <img src="https://cdn3.iconfinder.com/data/icons/banks-in-indonesia-logo-badge/100/BNI-512.png" class="h-8" alt="ic-bni">
-                            </div>
-                            <div class="ml-4 flex-1">
-                                <h3 class="text-lg font-medium text-gray-800">BNI</h3>
-                            </div>
-                            <div class="ml-4 flex-shrink-0">
-                                <button class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">SELECT</button>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </form>
 
             </div>
 
@@ -85,7 +87,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <p class="text-gray-700 font-medium mb-2">Address</p>
+                        <p class="text-gray-700 font-medium mb-2">Shipping Address</p>
                         <p class="font-bold w-full break-words">Merdeka Square, Jalan Lapangan Monas, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110</p>
                     </div>
                 </div>
@@ -95,8 +97,18 @@
 
     </div>
 
-    <div class="flex justify-end mt-4">
-        <button class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded flex items-center">
+    <div class="w-full mt-4 p-8 bg-white rounded-lg shadow-md overflow-hidden">
+        <h2 class="text-2xl font-bold mb-6">Courier</h2>
+        <div class="flex items-center space-x-2">
+            <form>
+                <input type="radio" id="kurir-pos" name="delivery-option" class="form-radio text-blue-600">
+                <label for="kurir-pos" class="ml-2 text-gray-700">Kurir (POS)</label>
+            </form>
+        </div>
+    </div>
+
+    <div class="flex justify-end my-4">
+        <button id="btn-submit" class="bg-gray-500 text-white font-semibold py-2 px-4 rounded flex items-center">
             <span class="mr-2">Submit</span>
             <i class="fas fa-arrow-right"></i>
         </button>
@@ -104,36 +116,45 @@
 
 </div>
 
-
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
 
-<script>
-    document.querySelectorAll('.accordion-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const content = button.nextElementSibling;
-            const isOpen = content.classList.contains('block');
-            if (button.parentElement.classList.contains('accordion-item')) {
-                // Toggle parent section
-                const parentContent = button.nextElementSibling;
-                parentContent.classList.toggle('hidden');
-                button.classList.toggle('bg-gray-300');
-                
-                // Close all child sections under the same parent
-                if (!isOpen) {
-                    parentContent.querySelectorAll('.accordion-content').forEach(childContent => {
-                        childContent.classList.add('hidden');
-                        childContent.previousElementSibling.classList.remove('bg-gray-300');
-                    });
-                }
-            } else {
-                // Toggle child section
-                content.classList.toggle('hidden');
-                button.classList.toggle('bg-gray-300');
+    <script>
+
+        $('.payment-select').change(function() {
+            if ($(this).is(':checked')) {
+                // ?
             }
-        });
-    });
-</script>
+        })
+
+        $('#kurir-pos').change(function() {
+            if ($(this).is(':checked')) {
+                $("#btn-submit").css("background-color", "#F46300")
+            }
+        })
+
+        $('#btn-submit').click(function(e) {
+            
+            if ($('.payment-select:checked').length == 0) {
+                alert('Please select an payment methods option before submitting.')
+                return
+            }
+
+            if ($('#kurir-pos:checked').length == 0) {
+                alert('Please select an courier option before submitting.')
+                return
+            }
+
+            $(this).text("Please wait...")
+
+            setTimeout(() => {
+                $(this).text("Submit")
+            }, 1000);
+
+        })
+
+
+    </script>
 
 <?= $this->endSection() ?>
