@@ -32,9 +32,8 @@
         <div class="hidden lg:block navbar-c flex-1 rounded-md py-4 my-4 ml-2 mr-4">
             <div class="container mx-auto flex justify-around items-center">
                 <a href="<?= base_url() ?>" class="<?=$uri->getSegment(1) === '' ? ' font-bold text-white' : 'text-white ' ?>">Home</a>
-                <a href="<?= base_url() ?>my-orders" class="<?=$uri->getSegment(1) === 'term-and-condition' ? ' font-bold text-white' : 'text-white' ?>">My Orders</a>
+                <a href="<?= base_url() ?>my-orders" class="<?=$uri->getSegment(1) === 'my-orders' ? ' font-bold text-white' : 'text-white' ?>">My Orders</a>
                 <a href="<?= base_url() ?>cart/1" class="<?=$uri->getSegment(1) === 'cart' ? ' font-bold text-white' : 'text-white' ?>">Cart</a>
-                <a href="<?= base_url() ?>profile" class="<?=$uri->getSegment(1) === 'how-to-use' ? ' font-bold text-white' : 'text-white' ?>">Profile</a>
             </div>
         </div>
 
@@ -50,7 +49,6 @@
                     <li><a href="<?= base_url() ?>" class="text-sm">Home</a></li>
                     <li><a href="<?= base_url() ?>my-orders" class="text-sm">My Orders</a></li>
                     <li><a href="<?= base_url() ?>cart/1" class="text-sm">Cart</a></li>
-                    <li><a href="<?= base_url() ?>profile" class="text-sm">Profile</a></li>
                 </ul>
             </nav>
         </div>

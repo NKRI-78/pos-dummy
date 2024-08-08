@@ -4,10 +4,10 @@ namespace App\Controllers;
 
 use App\Controllers\Base;
 
-class AboutUs extends BaseController
+class Order extends BaseController
 {
     public function index(): string
     {
-        return view('aboutus/index');
+        return view('order/index');
     }
 }

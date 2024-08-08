@@ -52,6 +52,7 @@ abstract class BaseController extends Controller
         parent::initController($request, $response, $logger);
 
         helper('currency');
+        helper('dummy');
         // Preload any models, libraries, etc, here.
 
         // E.g.: $this->session = \Config\Services::session();

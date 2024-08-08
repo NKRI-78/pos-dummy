@@ -6,11 +6,11 @@
     <h1 class="text-3xl font-bold mb-6"></h1>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-    <div class="lg:col-span-2 bg-white p-4 rounded-lg shadow-md">
+      <div class="lg:col-span-2 bg-white p-4 rounded-lg shadow-md">
         <h2 class="text-2xl font-semibold mb-4">Cart Items</h2>
         <div class="divide-y divide-gray-200">
 
-            <div class="flex items-center py-4">
+          <div class="flex items-center py-4">
             <img class="w-24 h-24 rounded-lg object-cover mr-4" src="<?= $image ?>" alt="<?= $name ?>">
             <div class="flex-1">
                 <h3 class="text-lg font-semibold"><?= $name ?></h3>
@@ -22,12 +22,12 @@
             </div>
             <div class="text-lg font-semibold"><?= formatRupiah($price) ?></div>
             <!-- <button class="text-red-500 hover:text-red-700 ml-4">Remove</button> -->
-            </div>
+          </div>
 
         </div>
-    </div>
+      </div>
      
-    <div class="bg-white p-4 rounded-lg shadow-md">
+      <div class="bg-white p-4 rounded-lg shadow-md">
         <h2 class="text-2xl font-semibold mb-4">Summary</h2>
         <div class="flex justify-between mb-2">
           <span class="text-gray-500">Subtotal</span>
@@ -38,7 +38,9 @@
           <span>Total</span>
           <span><?= formatRupiah($price) ?></span>
         </div>
-        <button class="w-full bg-blue-500 text-white py-2 rounded-lg mt-4 hover:bg-blue-600">Checkout</button>
+        <a href="<?= base_url("shipping/". $id ) ?>" class="w-full bg-blue-500 text-center inline-block text-white py-2 rounded-lg mt-4 hover:bg-blue-600">
+          Checkout
+        </a>
       </div>
     </div>
 

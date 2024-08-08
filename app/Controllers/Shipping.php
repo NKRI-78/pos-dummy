@@ -4,10 +4,11 @@ namespace App\Controllers;
 
 use App\Controllers\Base;
 
-class Cart extends BaseController
+class Shipping extends BaseController
 {
-    public function index($id)
+    public function index($id): string
     {
+        
         $items = dataProduct();
 
         $item = null;
@@ -25,6 +26,6 @@ class Cart extends BaseController
             "image" => $item['image']
         ];
 
-        return view('cart/index', $data);
+        return view('shipping/index', $data);
     }
 }
