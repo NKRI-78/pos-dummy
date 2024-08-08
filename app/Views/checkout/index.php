@@ -135,7 +135,7 @@
         })
 
         $('#btn-submit').click(function(e) {
-            
+
             if ($('.payment-select:checked').length == 0) {
                 alert('Please select an payment methods option before submitting.')
                 return
