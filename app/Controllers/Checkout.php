@@ -8,6 +8,17 @@ class Checkout extends BaseController
 {
     public function index($id)
     {
-        return view('checkout/index');
+
+        $session = session();
+        
+        $fullname = $session->get('fullname');
+        $phone = $session->get('phone');
+        $address = $session->get('address');
+
+        return view('checkout/index', [
+            'fullname' => $fullname,
+            'phone' => $phone,
+            'address' => $address
+        ]);
     }
 }

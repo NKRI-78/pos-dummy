@@ -18,12 +18,12 @@
             <div class="flex-1">
                 <h3 class="text-lg font-semibold">Ikan</h3>
                 <div class="mt-2">
-                  <button aria-label="Decrease quantity" class="text-gray-500 hover:text-gray-700 mr-2">-</button>
-                    <span class="text-gray-700">1</span>
-                  <button aria-label="Increase quantity" class="text-gray-500 hover:text-gray-700 ml-2">+</button>
+                  <button aria-label="Decrease quantity" class="decrement-qty text-gray-500 hover:text-gray-700 mr-2">-</button>
+                    <span class="text-gray-700 qty">1</span>
+                  <button aria-label="Increase quantity" class="increment-qty text-gray-500 hover:text-gray-700 ml-2">+</button>
                 </div>
             </div>
-            <div class="text-lg font-semibold"><?= formatRupiah(10000) ?></div>
+            <div class="text-lg font-semibold price-per-item" data-price="10000"><?= formatRupiah(10000) ?></div>
             <!-- <button class="text-red-500 hover:text-red-700 ml-4">Remove</button> -->
           </div>
         </div>
@@ -33,12 +33,12 @@
         <h2 class="text-2xl font-semibold mb-4">Summary</h2>
         <div class="flex justify-between mb-2">
           <span class="text-gray-500">Subtotal</span>
-          <span class="text-gray-700"><?= formatRupiah(10000) ?></span>
+          <span class="text-gray-700 total-price"><?= formatRupiah(10000) ?></span>
         </div>
         <div class="border-t border-gray-200 my-2"></div>
         <div class="flex justify-between font-bold text-lg">
           <span>Total</span>
-          <span><?= formatRupiah(10000) ?></span>
+          <span class="total-price"><?= formatRupiah(10000) ?></span>
         </div>
         <a href="<?= base_url("shipping/1") ?>" class="w-full bg-blue-500 text-center inline-block text-white py-2 rounded-lg mt-4 hover:bg-blue-600">
           Checkout
@@ -50,13 +50,44 @@
 
 <?= $this->endSection() ?>
 
+<?= $this->section('script') ?>
+
+  <script>
+
+    function formatCurrencyIDR(amount) {
+      return new Intl.NumberFormat('id-ID', {
+        style: 'currency',
+        currency: 'IDR',
+        minimumFractionDigits: 0
+      }).format(amount);
+    }
+
+    function updateTotalPrice() {
+      var pricePerItem = parseInt($(".price-per-item").data("price"))
+      var quantity = parseInt($(".qty").text())
+      var totalPrice = pricePerItem * quantity
+      $(".total-price").text(formatCurrencyIDR(totalPrice));
+    }
+
+    $(".increment-qty").click(function() {
+      var plus = parseInt($(".qty").text()) + 1
+      $(".qty").text(plus)
+      updateTotalPrice()
+    })
+
+    $(".decrement-qty").click(function() {
+      var currentQty = parseInt($(".qty").text())
+      if (currentQty > 1) {
+        var minus = currentQty - 1
+        $(".qty").text(minus)
+        updateTotalPrice()
+      }
+    })
+
+  </script>
 
 
-
-
-
-
-
+<?= $this->endSection() ?>
 
 
 

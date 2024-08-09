@@ -29,9 +29,8 @@
         <?php if($uri->getSegment(1) == 'shipping' || $uri->getSegment(1) == 'checkout'): ?>
             <div class="flex flex-row justify-center mt-8 items-center gap-4">
                 <div>
-                    <button id="btn-back">
-                    <img src="<?= base_url("public/assets/image/ic-back.png") ?>" onclick="history.back()" class="h-10 cursor-pointer" alt="ic-back">
-
+                    <button">
+                        <img src="<?= base_url("public/assets/image/ic-back.png") ?>" onclick="history.back()" class="h-10 cursor-pointer" alt="ic-back">
                     </button>
                 </div>
                 <div class="flex flex-row items-center gap-3">
@@ -53,10 +52,12 @@
         <!-- sweet alert -->
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.0/dist/sweetalert2.all.min.js"></script>
+
+        <!-- axios -->
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
         <!-- jquery -->
-        <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <?= $this->renderSection('script') ?>
 

@@ -544,3 +544,47 @@ in APPPATH/Controllers/Shipping.php on line 11.
  3 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Shipping))
  4 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  5 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-08 23:30:20 --> RuntimeException: View themes, no current section.
+in SYSTEMPATH/View/View.php on line 425.
+ 1 APPPATH/Views/order/index.php(65): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH/View/View.php(228): include('/Applications/MAMP/htdocs/dummy-pos/app/Views/order/index.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1178): CodeIgniter\View\View->render('order/index', [], true)
+ 5 APPPATH/Controllers/Order.php(28): view('order/index', [])
+ 6 SYSTEMPATH/CodeIgniter.php(941): App\Controllers\Order->index()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Order))
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-08 23:30:21 --> RuntimeException: View themes, no current section.
+in SYSTEMPATH/View/View.php on line 425.
+ 1 APPPATH/Views/order/index.php(65): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH/View/View.php(228): include('/Applications/MAMP/htdocs/dummy-pos/app/Views/order/index.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1178): CodeIgniter\View\View->render('order/index', [], true)
+ 5 APPPATH/Controllers/Order.php(28): view('order/index', [])
+ 6 SYSTEMPATH/CodeIgniter.php(941): App\Controllers\Order->index()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Order))
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-08 23:30:21 --> RuntimeException: View themes, no current section.
+in SYSTEMPATH/View/View.php on line 425.
+ 1 APPPATH/Views/order/index.php(65): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH/View/View.php(228): include('/Applications/MAMP/htdocs/dummy-pos/app/Views/order/index.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1178): CodeIgniter\View\View->render('order/index', [], true)
+ 5 APPPATH/Controllers/Order.php(28): view('order/index', [])
+ 6 SYSTEMPATH/CodeIgniter.php(941): App\Controllers\Order->index()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Order))
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-08 23:30:22 --> RuntimeException: View themes, no current section.
+in SYSTEMPATH/View/View.php on line 425.
+ 1 APPPATH/Views/order/index.php(65): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH/View/View.php(228): include('/Applications/MAMP/htdocs/dummy-pos/app/Views/order/index.php')
+ 3 SYSTEMPATH/View/View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH/Common.php(1178): CodeIgniter\View\View->render('order/index', [], true)
+ 5 APPPATH/Controllers/Order.php(28): view('order/index', [])
+ 6 SYSTEMPATH/CodeIgniter.php(941): App\Controllers\Order->index()
+ 7 SYSTEMPATH/CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Order))
+ 8 SYSTEMPATH/CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH/index.php(79): CodeIgniter\CodeIgniter->run()

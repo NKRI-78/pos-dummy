@@ -78,17 +78,17 @@
                 <div class="rounded-lg p-8 w-full mt-4">
                     <div class="mb-4">
                         <p class="text-gray-700 font-medium mb-2">Fullname</p>
-                        <p class="font-bold w-full break-words">Reihan Agam</p>
+                        <p class="font-bold w-full break-words"><?= $fullname ?></p>
                     </div>
 
                     <div class="mb-4">
                         <p class="block text-gray-700 font-medium mb-2">Phone Number</p>
-                        <p class="font-bold">089670558381</p>
+                        <p class="font-bold"><?= $phone ?></p>
                     </div>
 
                     <div class="mb-4">
                         <p class="text-gray-700 font-medium mb-2">Shipping Address</p>
-                        <p class="font-bold w-full break-words">Merdeka Square, Jalan Lapangan Monas, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110</p>
+                        <p class="font-bold w-full break-words"><?= $address ?></p>
                     </div>
                 </div>
             </div>

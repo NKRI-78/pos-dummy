@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="text-center">
-                        <a href="<?= base_url("checkout/1") ?>" class="w-full inline-block bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 focus:outline-none">Next</a>
+                        <a href="javascript:void(0)" id="btn-submit" class="w-full inline-block bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 focus:outline-none">Next</a>
                     </div>
                 </form>
 
@@ -56,9 +56,43 @@
     </div>
 
 
-
-
 </div>
 
+<?= $this->endSection() ?>
+
+<?= $this->section('script') ?>
+
+    <script>
+
+        var baseUrl = '<?= base_url('shipping/save-personal-info') ?>'
+
+        console.log(baseUrl)
+        
+        $("#btn-submit").click(function(e) {
+            e.preventDefault()
+
+            var fullname = $("#fullname").val()
+            var phone = $("#phone").val()
+            var address = $("#address").val()
+
+            $.ajax({
+                url: baseUrl, 
+                type: "POST",
+                data: {
+                    fullname: fullname,
+                    phone: phone,
+                    address: address
+                },
+                success: function(response) {
+                    console.log(response);
+                    location.href = "<?= base_url("checkout/1") ?> "
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        })
+
+    </script>
 
 <?= $this->endSection() ?>
