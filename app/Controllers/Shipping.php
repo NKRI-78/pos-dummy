@@ -7,7 +7,7 @@ use App\Controllers\Base;
 class Shipping extends BaseController
 {
     
-    public function index($id): string
+    public function index(): string
     {
         return view('shipping/index');
     }

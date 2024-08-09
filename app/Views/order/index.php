@@ -17,6 +17,7 @@
             <div class="flex items-center py-4">
               <img class="w-24 h-24 rounded-lg object-cover mr-4" src="<?= $item["img"] ?>" alt="<?= $item["name"] ?>">
               <div class="flex-1">
+                  <input id="item-id" type="hidden" name="id" value="<?= $item["id"] ?>">
                   <h3 class="text-lg font-semibold"><?= $item["name"] ?></h3>
                   <div class="mt-2">
                     <button aria-label="Decrease quantity" class="decrement-qty text-gray-500 hover:text-gray-700 mr-2">-</button>
@@ -36,14 +37,14 @@
         <h2 class="text-2xl font-semibold mb-4">Summary</h2>
         <div class="flex justify-between mb-2">
           <span class="text-gray-500">Subtotal</span>
-          <span class="text-gray-700 total-price"><?= formatRupiah(10000) ?></span>
+          <span class="text-gray-700 total-price"><?= formatRupiah($totalprice) ?></span>
         </div>
         <div class="border-t border-gray-200 my-2"></div>
         <div class="flex justify-between font-bold text-lg">
           <span>Total</span>
-          <span class="total-price"><?= formatRupiah(10000) ?></span>
+          <span class="total-price"><?= formatRupiah($totalprice) ?></span>
         </div>
-        <a href="<?= base_url("shipping/1") ?>" class="w-full bg-blue-500 text-center inline-block text-white py-2 rounded-lg mt-4 hover:bg-blue-600">
+        <a href="javascript:void(0)" id="checkout-btn" class="w-full bg-blue-500 text-center inline-block text-white py-2 rounded-lg mt-4 hover:bg-blue-600">
           Checkout
         </a>
       </div>
@@ -56,6 +57,8 @@
 <?= $this->section('script') ?>
 
   <script>
+
+    var dataArr = []
 
     function formatCurrencyIDR(amount) {
       return new Intl.NumberFormat('id-ID', {
@@ -74,31 +77,69 @@
     // }
 
     function updateSummary() {
-      var totalQuantity = 0;
-      var totalPrice = 0;
+      var totalQuantity = 0
+      var totalPrice = 0
 
       $(".item").each(function() {
-        var item = $(this);
-        var quantity = parseInt(item.find(".qty").text());
-        var pricePerItem = parseInt(item.data("price"));
-        var itemTotalPrice = quantity * pricePerItem;
+        var item = $(this)
+        var quantity = parseInt(item.find(".qty").text())
+        var pricePerItem = parseInt(item.data("price"))
+        var itemTotalPrice = quantity * pricePerItem
 
-        totalQuantity += quantity;
-        totalPrice += itemTotalPrice;
+        totalQuantity += quantity
+        totalPrice += itemTotalPrice
       })
 
-      $(".total-price").text(formatCurrencyIDR(totalPrice));
+      $(".total-price").text(formatCurrencyIDR(totalPrice))
     }
 
-    $(".increment-qty").click(function() {
+    $("#checkout-btn").click(function(e) {
+      var totalQuantity = 0
+      var totalPrice = 0
+      
+      $(".item").each(function() {
+        var item = $(this)
+        var id = item.find("#item-id").val()
+        var pricePerItem = parseInt(item.data("price"));
+        var quantity = parseInt(item.find(".qty").text())
+
+        var itemTotalPrice = quantity * pricePerItem
+
+        totalQuantity += quantity
+        totalPrice += itemTotalPrice
+
+        dataArr.push({
+          "id": parseInt(id)
+        })
+      })
+
+      $.ajax({
+        url: '<?= base_url("checkout/checkout-order") ?>', 
+        type: "POST",
+        data: {
+          total_qty: parseInt(totalQuantity),
+          total_price: parseInt(totalPrice),
+          data: dataArr
+        },
+        success: function(response) {
+          console.log(response)
+          location.href = "<?= base_url("/shipping") ?>"
+        },
+        error: function(xhr, status, error) {
+          console.error(error);
+        }
+      })
+    })
+
+    $(".increment-qty").click(function(e) {
       var item = $(this).closest(".item")
       var plus = parseInt(item.find(".qty").text()) + 1
       item.find(".qty").text(plus)
       updateSummary()
       // updateTotalPrice(item)
-    });
+    })
 
-    $(".decrement-qty").click(function() {
+    $(".decrement-qty").click(function(e) {
       var item = $(this).closest(".item")
       var currentQty = parseInt(item.find(".qty").text())
       if (currentQty != 1) { 
@@ -107,7 +148,35 @@
         updateSummary()
         // updateTotalPrice(item)
       }
-    });
+    })
+
+    document.getElementById('start-scan').addEventListener('click', function() {
+      document.getElementById('reader').style.display = 'block'
+
+      const html5QrCode = new Html5Qrcode("reader")
+
+      html5QrCode.start(
+          { facingMode: "environment" }, 
+          {
+              fps: 10, 
+              qrbox: {
+                  width: 250, 
+                  height: 250 
+              } 
+          },
+          qrCodeMessage => {
+              alert(`QR Code detected: ${qrCodeMessage}`)
+              html5QrCode.stop()
+              document.getElementById('reader').style.display = 'none'
+          },
+          errorMessage => {
+              console.log(`Scan error: ${errorMessage}`)
+          }
+      ).catch(err => {
+          console.error(`Unable to start scanning: ${err}`)
+      })
+    })
+            
 
   </script>
 

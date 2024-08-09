@@ -10,28 +10,20 @@ class Order extends BaseController
 {
     public function index()
     {
-        // $items = dataProduct();
-
-        // $item = null;
-        // foreach ($items as $i) {
-            // if ($i['id'] == $id) {
-                // $item = $i;
-                // break;
-            // }
-        // }
-
-        // $data = [
-        //     // "id" => $item['id'],
-        //     // "name" => $item['name'],
-        //     // "price" => $item['price'],
-        //     // "image" => $item['image']
-        // ];
-
         $client = new Client();
-        $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/order-pos');
+        $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/carts');
          
         $data = json_decode($response->getBody(), true);
 
-        return view('order/index', ['data' => $data["data"]]);
+        $totalPrice = 0;
+
+        foreach ($data["data"] as $key => $value) {
+            $totalPrice += $value["price"]; 
+        }
+
+        return view('order/index', [
+            "data" => $data["data"],
+            "totalprice" => $totalPrice
+        ]);
     }
 }

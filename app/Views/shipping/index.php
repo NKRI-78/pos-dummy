@@ -7,9 +7,11 @@
     <div class="flex flex-col md:flex-row gap-6 items-start">
 
         <div class="w-full md:w-3/5 lg:col-span-2 bg-white p-4 rounded-lg shadow-md">
+            
             <div class="flex justify-between">
                 <h2 class="text-2xl font-semibold mb-4">My Orders</h2>
             </div>
+
             <div class="divide-y divide-gray-200">
                 <div class="flex items-center py-4">
                     <img class="w-24 h-24 rounded-lg object-cover mr-4" src="https://images.tokopedia.net/img/KRMmCm/2022/9/23/74c8ec25-e12c-4743-96a4-2a3dd264a7c6.jpg" alt="Ikan Segar">
@@ -19,6 +21,7 @@
                     <div class="text-lg font-semibold"><?= formatRupiah(10000) ?></div>
                 </div>
             </div>
+
         </div>
 
         <div class="w-full md:w-2/5 flex items-center justify-center">
@@ -66,8 +69,6 @@
 
         var baseUrl = '<?= base_url('shipping/save-personal-info') ?>'
 
-        console.log(baseUrl)
-        
         $("#btn-submit").click(function(e) {
             e.preventDefault()
 
@@ -105,7 +106,7 @@
                 error: function(xhr, status, error) {
                     console.error(error);
                 }
-            });
+            })
         })
 
     </script>
