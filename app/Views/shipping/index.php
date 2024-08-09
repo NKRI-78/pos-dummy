@@ -45,7 +45,7 @@
                     </div>
 
                     <div class="text-center">
-                        <a href="javascript:void(0)" id="btn-submit" class="w-full inline-block bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600 focus:outline-none">Next</a>
+                        <a href="javascript:void(0)" id="btn-submit" class="w-full inline-block text-white p-2 rounded-lg hover:bg-blue-600 focus:outline-none" style="background-color: #F46300;">Next</a>
                     </div>
                 </form>
 
@@ -74,6 +74,21 @@
             var fullname = $("#fullname").val()
             var phone = $("#phone").val()
             var address = $("#address").val()
+
+            if(fullname.trim() == "") {
+                alert("Field full name is required")
+                return
+            }
+
+            if(phone.trim() == "") {
+                alert("Field phone is required")
+                return
+            }
+
+            if(address.trim() == "") {
+                alert("Field address is required")
+                return
+            }
 
             $.ajax({
                 url: baseUrl, 

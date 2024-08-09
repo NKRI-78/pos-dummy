@@ -149,7 +149,11 @@
             $(this).text("Please wait...")
 
             setTimeout(() => {
+                
                 $(this).text("Submit")
+
+                location.href = "<?= base_url("delivery") ?>"
+
             }, 1000);
 
         })

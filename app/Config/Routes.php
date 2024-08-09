@@ -6,6 +6,8 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Order::index');
 
+$routes->get('/delivery', 'Delivery::index');
+
 $routes->get('/shipping/(:num)', 'Shipping::index/$1');
 
 $routes->post('/shipping/save-personal-info', 'Shipping::savePersonalInfo');

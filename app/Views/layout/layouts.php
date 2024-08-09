@@ -26,7 +26,7 @@
 
     <body class="flex flex-col">
 
-        <?php if($uri->getSegment(1) == 'shipping' || $uri->getSegment(1) == 'checkout'): ?>
+        <?php if($uri->getSegment(1) == 'shipping' || $uri->getSegment(1) == 'checkout' || $uri->getSegment(1) == 'delivery'): ?>
             <div class="flex flex-row justify-center mt-8 items-center gap-4">
                 <div>
                     <button">
@@ -34,13 +34,26 @@
                     </button>
                 </div>
                 <div class="flex flex-row items-center gap-3">
-                    <img src="<?=  base_url("public/assets/image/cart-active.png") ?>" class="h-5" alt="Cart">
+                    <img src="<?= base_url("public/assets/image/cart-active.png") ?>" class="h-5" alt="Cart">
                     <img src="<?= base_url("public/assets/image/divider.png") ?>" class="h-1" alt="Divider">
-                    <img src="<?= $uri->getSegment(1) == 'checkout' ? base_url("public/assets/image/personal-info-active.png") : base_url("public/assets/image/personal-info-current.png") ?>" class="h-5" alt="Personal Information">
+                    <img src="<?= $uri->getSegment(1) == 'checkout' ? base_url("public/assets/image/personal-info-active.png") : $uri->getSegment(1) == 'delivery' ? base_url("public/assets/image/personal-info-active.png") : base_url("public/assets/image/personal-info-current.png") ?>" class="h-5" alt="Personal Information">
                     <img src="<?= base_url("public/assets/image/divider.png") ?>" class="h-1" alt="Divider">
-                    <img src="<?= $uri->getSegment(1) == 'checkout' ? base_url("public/assets/image/checkout-current.png") : base_url("public/assets/image/checkout.png") ?>" class="h-5" alt="Checkout">
+                    
+                    <?php if($uri->getSegment(1) == 'checkout'): ?>
+                        <img src="<?= base_url("public/assets/image/checkout-current.png") ?>" class="h-5" alt="Checkout">
+                    <?php endif; ?>
+
+                    <?php if($uri->getSegment(1) == 'delivery'): ?>
+                        <img src="<?= base_url("public/assets/image/checkout-active.png") ?>" class="h-5" alt="Checkout">
+                    <?php endif; ?>
+
+                    <?php if($uri->getSegment(1) == 'shipping'): ?>
+                        <img src="<?= base_url("public/assets/image/checkout.png") ?>" class="h-5" alt="Checkout">
+                    <?php endif; ?>
+                    
                     <img src="<?= base_url("public/assets/image/divider.png") ?>" class="h-1" alt="Divider">
-                    <img src="<?= base_url("public/assets/image/delivery.png") ?>" class="h-5" alt="Delivery">
+                    
+                    <img src="<?= $uri->getSegment(1) == 'delivery' ? base_url("public/assets/image/delivery-active.png") : base_url("public/assets/image/delivery.png") ?>" class="h-5" alt="Delivery">
                 </div>
             </div>
         <?php endif; ?>
