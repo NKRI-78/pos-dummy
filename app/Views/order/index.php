@@ -9,24 +9,27 @@
       <div class="w-full md:w-3/5 bg-white p-4 rounded-lg shadow-md">
         <div class="flex justify-between">
           <h2 class="text-2xl font-semibold mb-4">My Orders</h2>
-          <img src="<?= base_url("public/assets/image/ic-scan.png") ?>" class="h-12 cursor-pointer" alt="ic-scan">
+          <img src="<?= base_url("public/assets/image/ic-scan.png") ?>" id="start-scan" class="h-12 cursor-pointer" alt="ic-scan">
         </div>
 
-        <div class="divide-y divide-gray-200">
-          <div class="flex items-center py-4">
-            <img class="w-24 h-24 rounded-lg object-cover mr-4" src="https://images.tokopedia.net/img/KRMmCm/2022/9/23/74c8ec25-e12c-4743-96a4-2a3dd264a7c6.jpg" alt="Ikan Segar">
-            <div class="flex-1">
-                <h3 class="text-lg font-semibold">Ikan</h3>
-                <div class="mt-2">
-                  <button aria-label="Decrease quantity" class="decrement-qty text-gray-500 hover:text-gray-700 mr-2">-</button>
-                    <span class="text-gray-700 qty">1</span>
-                  <button aria-label="Increase quantity" class="increment-qty text-gray-500 hover:text-gray-700 ml-2">+</button>
-                </div>
+        <?php foreach($data as $item): ?>
+          <div class="item divide-y divide-gray-200" data-price="<?= $item["price"] ?>">
+            <div class="flex items-center py-4">
+              <img class="w-24 h-24 rounded-lg object-cover mr-4" src="<?= $item["img"] ?>" alt="<?= $item["name"] ?>">
+              <div class="flex-1">
+                  <h3 class="text-lg font-semibold"><?= $item["name"] ?></h3>
+                  <div class="mt-2">
+                    <button aria-label="Decrease quantity" class="decrement-qty text-gray-500 hover:text-gray-700 mr-2">-</button>
+                      <span class="text-gray-700 qty">1</span>
+                    <button aria-label="Increase quantity" class="increment-qty text-gray-500 hover:text-gray-700 ml-2">+</button>
+                  </div>
+              </div>
+              <div class="text-lg font-semibold price-per-item"><?= formatRupiah($item["price"]) ?></div>
+              <!-- <button class="text-red-500 hover:text-red-700 ml-4">Remove</button> -->
             </div>
-            <div class="text-lg font-semibold price-per-item" data-price="10000"><?= formatRupiah(10000) ?></div>
-            <!-- <button class="text-red-500 hover:text-red-700 ml-4">Remove</button> -->
           </div>
-        </div>
+        <?php endforeach; ?>
+
       </div>
 
       <div class="w-full md:w-2/5 bg-white p-4 rounded-lg shadow-md">
@@ -62,27 +65,49 @@
       }).format(amount);
     }
 
-    function updateTotalPrice() {
-      var pricePerItem = parseInt($(".price-per-item").data("price"))
-      var quantity = parseInt($(".qty").text())
-      var totalPrice = pricePerItem * quantity
+    // function updateTotalPrice(item) {
+    //   var pricePerItem = parseInt(item.data("price"))
+    //   var quantity = parseInt(item.find(".qty").text())
+    //   var totalPrice = pricePerItem * quantity
+      
+    //   $(".total-price").text(totalPrice);
+    // }
+
+    function updateSummary() {
+      var totalQuantity = 0;
+      var totalPrice = 0;
+
+      $(".item").each(function() {
+        var item = $(this);
+        var quantity = parseInt(item.find(".qty").text());
+        var pricePerItem = parseInt(item.data("price"));
+        var itemTotalPrice = quantity * pricePerItem;
+
+        totalQuantity += quantity;
+        totalPrice += itemTotalPrice;
+      })
+
       $(".total-price").text(formatCurrencyIDR(totalPrice));
     }
 
     $(".increment-qty").click(function() {
-      var plus = parseInt($(".qty").text()) + 1
-      $(".qty").text(plus)
-      updateTotalPrice()
-    })
+      var item = $(this).closest(".item")
+      var plus = parseInt(item.find(".qty").text()) + 1
+      item.find(".qty").text(plus)
+      updateSummary()
+      // updateTotalPrice(item)
+    });
 
     $(".decrement-qty").click(function() {
-      var currentQty = parseInt($(".qty").text())
-      if (currentQty > 1) {
+      var item = $(this).closest(".item")
+      var currentQty = parseInt(item.find(".qty").text())
+      if (currentQty != 1) { 
         var minus = currentQty - 1
-        $(".qty").text(minus)
-        updateTotalPrice()
+        item.find(".qty").text(minus)
+        updateSummary()
+        // updateTotalPrice(item)
       }
-    })
+    });
 
   </script>
 

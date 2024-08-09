@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use GuzzleHttp\Client;
+
 use App\Controllers\Base;
 
 class Order extends BaseController
@@ -18,13 +20,18 @@ class Order extends BaseController
             // }
         // }
 
-        $data = [
-            // "id" => $item['id'],
-            // "name" => $item['name'],
-            // "price" => $item['price'],
-            // "image" => $item['image']
-        ];
+        // $data = [
+        //     // "id" => $item['id'],
+        //     // "name" => $item['name'],
+        //     // "price" => $item['price'],
+        //     // "image" => $item['image']
+        // ];
 
-        return view('order/index', $data);
+        $client = new Client();
+        $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/order-pos');
+         
+        $data = json_decode($response->getBody(), true);
+
+        return view('order/index', ['data' => $data["data"]]);
     }
 }
