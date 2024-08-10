@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use GuzzleHttp\Client;
+
 use App\Controllers\Base;
 
 class Shipping extends BaseController
@@ -9,7 +11,20 @@ class Shipping extends BaseController
     
     public function index(): string
     {
-        return view('shipping/index');
+
+        $client = new Client();
+        $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/order-pos');
+         
+        $data = json_decode($response->getBody(), true);
+
+        $totalPrice = $data["data"]["order"]["total_price"];
+
+        $products = $data["data"]["products"];
+
+        return view('shipping/index', [
+            "products" => $products,
+            "total_price" => $totalPrice
+        ]);
     }
 
     public function savePersonalInfo() 
@@ -25,7 +40,6 @@ class Shipping extends BaseController
             $session->set('fullname', $fullname);
             $session->set('phone', $phone);
             $session->set('address', $address);
-
         }
 
         return $this->response->setJSON(['status' => 200, 'message' => 'Ok.']);

@@ -5,15 +5,22 @@
 <div class="container mx-auto p-6">
 
     <div class="lg:col-span-2 bg-white p-4 rounded-lg shadow-md">
-        <div class="divide-y divide-gray-200">
-            <div class="flex items-center py-4">
-                <img class="w-24 h-24 rounded-lg object-cover mr-4" src="https://images.tokopedia.net/img/KRMmCm/2022/9/23/74c8ec25-e12c-4743-96a4-2a3dd264a7c6.jpg" alt="Ikan Segar">
-                <div class="flex-1">
-                    <h3 class="text-lg font-semibold">Ikan</h3>
+
+        <?php foreach($products as $item): ?>
+            <div class="divide-y divide-gray-200">
+                <div class="flex items-center py-4">
+                    <img class="w-24 h-24 rounded-lg object-cover mr-4" src="<?= $item["img"] ?>" alt="Ikan Segar">
+                    <div class="flex-1">
+                        <h3 class="text-lg font-semibold"><?= $item["name"] ?></h3>
+                        <p>
+                            x <?= $item["qty"] ?>
+                        </p>
+                    </div>
+                    <div class="text-lg font-semibold"><?= formatRupiah($item["price"]) ?></div>
                 </div>
-                <div class="text-lg font-semibold"><?= formatRupiah(10000) ?></div>
             </div>
-        </div>
+        <?php endforeach; ?>
+
     </div>
 
     <div class="w-full mt-4">
@@ -37,7 +44,7 @@
                                     <label for="payment-mandiri" class="text-gray-700">BCA</label>
                                 </div>
                                 <div class="ml-4 flex-shrink-0">
-                                    <input type="radio" id="payment-bni" name="delivery-option" class="payment-select form-radio text-blue-600">
+                                    <input type="radio" id="payment-bni" value="BCA" name="delivery-option" class="payment-select form-radio text-blue-600">
                                 </div>
                             </div>
                         </li>
@@ -50,7 +57,7 @@
                                     <label for="payment-mandiri" class="text-gray-700">MANDIRI</label>
                                 </div>
                                 <div class="ml-4 flex-shrink-0">
-                                <input type="radio" id="payment-mandiri" name="delivery-option" class="payment-select form-radio text-blue-600">
+                                <input type="radio" id="payment-mandiri" value="MANDIRI" name="delivery-option" class="payment-select form-radio text-blue-600">
                                 </div>
                             </div>
                         </li>
@@ -63,7 +70,7 @@
                                     <label for="payment-bni" class="text-gray-700">BNI</label>
                                 </div>
                                 <div class="ml-4 flex-shrink-0">
-                                    <input type="radio" id="payment-bni" name="delivery-option" class="payment-select form-radio text-blue-600">
+                                    <input type="radio" id="payment-bni" value="BNI" name="delivery-option" class="payment-select form-radio text-blue-600">
                                 </div>
                             </div>
                         </li>
@@ -101,7 +108,7 @@
         <h2 class="text-2xl font-bold mb-6">Courier</h2>
         <div class="flex items-center space-x-2">
             <form>
-                <input type="radio" id="kurir-pos" name="delivery-option" class="form-radio text-blue-600">
+                <input type="radio" id="kurir-pos" value="Kurir (POS)" name="delivery-option" class="form-radio text-blue-600">
                 <label for="kurir-pos" class="ml-2 text-gray-700">Kurir (POS)</label>
             </form>
         </div>
@@ -152,7 +159,26 @@
                 
                 $(this).text("Submit")
 
-                location.href = "<?= base_url("delivery") ?>"
+                var payment = $('.payment-select:checked').val() 
+                var courier = $('#kurir-pos:checked').val()
+
+                $.ajax({
+                    url: '<?= base_url("delivery/save-payment-courier") ?>', 
+                    type: "POST",
+                    data: {
+                        payment: payment,
+                        courier: courier
+                    },
+                    success: function(response) {
+                        console.log(response)
+                        location.href = "<?= base_url("delivery") ?>"
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                    }
+                })
+
+
 
             }, 1000);
 

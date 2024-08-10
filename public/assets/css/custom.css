@@ -5,7 +5,7 @@ body {
 }
 
 .navbar-c {
-    background-color: #50C467;
+    background-color: #F46300;
 }
 
 .logo-c {
@@ -19,15 +19,15 @@ body {
 .mobile-menu {
     position: fixed;
     top: 0;
-    left: -250px;
+    right: -250px;
     width: 250px;
     height: 100%;
-    background-color: #50C467;
+    background-color: #F46300;
     transition: left 0.3s ease;
 }
 
 .active {
-    left: 0;
+    right: 0;
 }
 
 .menu-items {

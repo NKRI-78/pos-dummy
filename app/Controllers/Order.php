@@ -11,7 +11,7 @@ class Order extends BaseController
     public function index()
     {
         $client = new Client();
-        $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/carts');
+        $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/cart-pos');
          
         $data = json_decode($response->getBody(), true);
 

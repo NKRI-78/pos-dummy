@@ -26,7 +26,7 @@
                   </div>
               </div>
               <div class="text-lg font-semibold price-per-item"><?= formatRupiah($item["price"]) ?></div>
-              <!-- <button class="text-red-500 hover:text-red-700 ml-4">Remove</button> -->
+              <button class="text-red-500 hover:text-red-700 ml-4">Remove</button>
             </div>
           </div>
         <?php endforeach; ?>
@@ -44,7 +44,7 @@
           <span>Total</span>
           <span class="total-price"><?= formatRupiah($totalprice) ?></span>
         </div>
-        <a href="javascript:void(0)" id="checkout-btn" class="w-full bg-blue-500 text-center inline-block text-white py-2 rounded-lg mt-4 hover:bg-blue-600">
+        <a href="javascript:void(0)" id="checkout-btn" class="w-full text-center inline-block text-white py-2 rounded-lg mt-4" style="background-color: #F46300;">
           Checkout
         </a>
       </div>
@@ -109,7 +109,8 @@
         totalPrice += itemTotalPrice
 
         dataArr.push({
-          "id": parseInt(id)
+          "id": parseInt(id),
+          "qty": parseInt(quantity)
         })
       })
 

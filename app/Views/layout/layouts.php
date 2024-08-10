@@ -1,4 +1,15 @@
-<?php $uri = current_url(true) ?>
+<?php 
+    use GuzzleHttp\Client;
+
+    $uri = current_url(true);
+    
+    $client = new Client();
+    $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/cart-pos');
+     
+    $data = json_decode($response->getBody(), true);
+
+    $cartCount = count(($data["data"]));
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +36,31 @@
     </head>
 
     <body class="flex flex-col">
+
+        <nav class="flex justify-between items-center">
+
+            <div class="hidden lg:block navbar-c flex-1 rounded-md py-4 my-4 ml-12 mr-12">
+                <div class="container mx-auto flex justify-around items-center">
+                    <a href="<?= base_url() ?>" class="<?=$uri->getSegment(1) === 'term-and-condition' ? ' font-bold text-white' : 'text-white' ?>">Cart (<?= $cartCount ?>)</a>
+                    <a href="<?= base_url() ?>about-us" class="<?=$uri->getSegment(1) === 'about-us' ? ' font-bold text-white' : 'text-white' ?>">My Orders</a>
+                </div>
+            </div>
+
+            <div class="lg:hidden navbar-c rounded-md my-4 mx-4">
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <nav class="mobile-menu z-50">
+                    <ul class="menu-items">
+                        <li><a href="<?= base_url() ?>" class="text-sm">Cart (<?= $cartCount ?>)</a></li>
+                        <li><a href="<?= base_url() ?>about-us" class="text-sm">My Orders</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+        </nav>
 
         <div class="flex flex-col justify-center items-center my-2">
             <div id="reader" style="width: 300px; height: 300px; display: none;"></div>
@@ -81,6 +117,18 @@
 
 
         <?= $this->renderSection('script') ?>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", async function() {
+            const menuToggle = document.querySelector('.menu-toggle')
+            const mobileMenu = document.querySelector('.mobile-menu')
+
+            menuToggle.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active')
+            })
+        })
+    </script>
 
     </body>
 

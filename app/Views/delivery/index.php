@@ -8,7 +8,7 @@
 
         <div class="w-full flex flex-col items-center justify-center">
             <div class="bg-white shadow-lg rounded-lg p-8 max-w-md w-full">
-                <h2 class="text-2xl font-bold mb-2 text-center">BCA</h2>
+                <h2 class="text-2xl font-bold mb-2 text-center"><?= $payment ?></h2>
                 <h3 class="text-1xl font-bold text-center" style="color: #2563E0;">VA - 7654567890987654563422</h3>
             </div>
         </div>
@@ -19,13 +19,21 @@
                 <div style="height: 0.5px; background-color: #000000;"> </div>
                 <div class="p-8">
                     <h3 class="text-2xl font-bold">Detail Order</h3>
+                    <?php foreach ($products as $product): ?>
+                        <div class="flex flex-row items-center justify-between mt-4">
+                            <p class="text-1xl" style="color: #808080;"><?= $product["name"] ?> x <?= $product["qty"] ?></p>
+                            <p><?= formatRupiah($product["price"]) ?></p>
+                        </div>
+                    <?php endforeach; ?>
+
                     <div class="flex flex-row items-center justify-between mt-4">
-                        <p class="text-1xl" style="color: #808080;">Ikan x 1</p>
-                        <p>Rp. 3.500</p>
-                    </div>
+                            <p class="text-1xl" style="color: #808080;">Courier</p>
+                            <p><?= $courier ?></p>
+                        </div>
+
                     <div class="flex flex-row items-center justify-between">
                         <h3 class="text-2xl mt-4 font-bold">Total</h3>
-                        <h3 class="text-2xl mt-4 font-bold">Rp 76.000</h3>
+                        <h3 class="text-2xl mt-4 font-bold"><?= formatRupiah($total_price) ?></h3>
                     </div>
                 </div>
                 <div style="height: 0.5px; background-color: #000000;"> </div>
@@ -45,14 +53,5 @@
 
 
 </div>
-
-<?= $this->endSection() ?>
-
-<?= $this->section('script') ?>
-
-    <script>
-
-       
-    </script>
 
 <?= $this->endSection() ?>
