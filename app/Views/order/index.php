@@ -152,52 +152,50 @@
     })
 
     $("#remove-cart").click(function(e) {
-      var id = $(this).data('id')
+        var id = $(this).data('id')
 
-      $.ajax({
-        url: '<?= base_url("/remove-cart") ?>', 
-        type: "POST",
-        data: {
-          cat_id: id,
-        },
-        success: function(response) {
-          console.log(response)
-          location.href = "<?= base_url() ?>"
-        },
-        error: function(xhr, status, error) {
-          console.error(error);
-        }
-      })
-    })
-
-    document.getElementById('start-scan').addEventListener('click', function() {
-      document.getElementById('reader').style.display = 'block'
-
-      const html5QrCode = new Html5Qrcode("reader")
-
-      html5QrCode.start(
-          { facingMode: "environment" }, 
-          {
-              fps: 10, 
-              qrbox: {
-                  width: 250, 
-                  height: 250 
-              } 
+        $.ajax({
+          url: '<?= base_url("/remove-cart") ?>', 
+          type: "POST",
+          data: {
+            cat_id: id,
           },
-          qrCodeMessage => {
-              alert(`QR Code detected: ${qrCodeMessage}`)
-              html5QrCode.stop()
-              document.getElementById('reader').style.display = 'none'
+          success: function(response) {
+            console.log(response)
+            location.href = "<?= base_url() ?>"
           },
-          errorMessage => {
-              console.log(`Scan error: ${errorMessage}`)
+          error: function(xhr, status, error) {
+            console.error(error);
           }
-      ).catch(err => {
-          console.error(`Unable to start scanning: ${err}`)
+        })
+      })
+
+      document.getElementById('start-scan').addEventListener('click', function() {
+        document.getElementById('reader').style.display = 'block'
+
+        const html5QrCode = new Html5Qrcode("reader")
+
+        html5QrCode.start({ facingMode: "environment" }, 
+        {
+          fps: 10, 
+          qrbox: {
+            width: 250, 
+            height: 250 
+          } 
+        },
+        qrCodeMessage => {
+          location.href = `https://dummy-pos.inovatiftujuh8.com/product/${qrCodeMessage}`
+          html5QrCode.stop()
+          document.getElementById('reader').style.display = 'none'
+        },
+        errorMessage => {
+          console.log(`Scan error: ${errorMessage}`)
+        }
+        ).catch(err => {
+        console.error(`Unable to start scanning: ${err}`)
       })
     })
             
-
   </script>
 
 
