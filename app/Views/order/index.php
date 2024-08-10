@@ -26,7 +26,7 @@
                   </div>
               </div>
               <div class="text-lg font-semibold price-per-item"><?= formatRupiah($item["price"]) ?></div>
-              <button class="text-red-500 hover:text-red-700 ml-4">Remove</button>
+              <button class="text-red-500 hover:text-red-700 ml-4" id="remove-cart" data-id="<?= $item["id"] ?>">Remove</button>
             </div>
           </div>
         <?php endforeach; ?>
@@ -149,6 +149,25 @@
         updateSummary()
         // updateTotalPrice(item)
       }
+    })
+
+    $("#remove-cart").click(function(e) {
+      var id = $(this).data('id')
+
+      $.ajax({
+        url: '<?= base_url("/remove-cart") ?>', 
+        type: "POST",
+        data: {
+          cat_id: id,
+        },
+        success: function(response) {
+          console.log(response)
+          location.href = "<?= base_url() ?>"
+        },
+        error: function(xhr, status, error) {
+          console.error(error);
+        }
+      })
     })
 
     document.getElementById('start-scan').addEventListener('click', function() {

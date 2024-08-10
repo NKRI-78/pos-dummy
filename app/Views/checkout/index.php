@@ -109,7 +109,7 @@
         <div class="flex items-center space-x-2">
             <form>
                 <input type="radio" id="kurir-pos" value="Kurir (POS)" name="delivery-option" class="form-radio text-blue-600">
-                <label for="kurir-pos" class="ml-2 text-gray-700">Kurir (POS)</label>
+                <label for="kurir-pos" class="ml-2 text-gray-700">Kurir (POS Indonesia)</label>
             </form>
         </div>
     </div>

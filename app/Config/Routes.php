@@ -4,6 +4,8 @@ use CodeIgniter\Router\RouteCollection;
 
 $routes->get('/', 'Order::index');
 
+$routes->post('/remove-cart', 'Order::removeCart');
+
 $routes->get('/delivery', 'Delivery::index');
 
 $routes->post('/delivery/save-payment-courier', 'Delivery::savePaymentCourier');

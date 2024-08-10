@@ -26,4 +26,38 @@ class Order extends BaseController
             "totalprice" => $totalPrice
         ]);
     }
+
+    public function removeCart()
+    {
+        $catId = $this->request->getPost('cat_id');
+
+        try {
+            $postData = [
+                'cat_id' => $catId,          
+            ];
+            
+            $client = new Client();
+            $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/delete-cart-pos',
+                [
+                    'json' => $postData,
+                    'headers' => [
+                        'Content-Type' => 'application/json',
+                    ]
+                ]
+            );
+            
+            $data = json_decode($response->getBody(), true);
+
+            return $this->response->setJSON([
+                'status' => 200, 
+                'message' => 'Ok.'
+            ]);
+
+        } catch (\GuzzleHttp\Exception\RequestException $e) {
+            return $this->response->setJSON([
+                'status' => 'error',
+                'message' => $e->getMessage()
+            ]);
+        }
+    }
 }

@@ -12,6 +12,7 @@ class Delivery extends BaseController
     {
         $client = new Client();
         $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/order-pos');
+
          
         $data = json_decode($response->getBody(), true);
 
@@ -23,6 +24,8 @@ class Delivery extends BaseController
         
         $payment = $session->get('payment');
         $courier = $session->get('courier');
+
+        $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/clear-cart-pos');
 
         return view('delivery/index', [
             "products" => $products,

@@ -13,15 +13,14 @@
 
         <div class="item divide-y divide-gray-200" data-price="<?= $data["price"] ?>">
             <div class="flex items-center py-4">
-                <img class="w-24 h-24 rounded-lg object-cover mr-4" src="<?= $data["img"] ?>" alt="<?= $data["name"] ?>">
-                <div class="flex-1">
-                    <h3 class="text-lg font-semibold"><?= $data["name"] ?></h3>
-                    <div class="mt-2"></div>
-                </div>
-                <div class="text-lg font-semibold price-per-item"><?= formatRupiah($data["price"]) ?></div>
-                
+              <img class="w-24 h-24 rounded-lg object-cover mr-4" src="<?= $data["img"] ?>" alt="<?= $data["name"] ?>">
+              <div class="flex-1">
+                <h3 class="text-lg font-semibold"><?= $data["name"] ?></h3>
+                <div class="mt-2"></div>
+              </div>
+              <div class="text-lg font-semibold price-per-item"><?= formatRupiah($data["price"]) ?></div>
             </div>
-             <a href="javascript:void(0)" id="add-cart-btn" class="w-full bg-blue-500 text-center inline-block text-white py-2 rounded-lg mt-4 hover:bg-blue-600">
+             <a href="javascript:void(0)" id="add-cart-btn" class="w-full text-center inline-block text-white py-2 rounded-lg mt-4"  style="background-color: #F46300;">
                 Add to Cart
             </a>
         </div>
