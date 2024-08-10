@@ -13,7 +13,6 @@ class Delivery extends BaseController
         $client = new Client();
         $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/order-pos');
 
-         
         $data = json_decode($response->getBody(), true);
 
         $totalPrice = $data["data"]["order"]["total_price"];

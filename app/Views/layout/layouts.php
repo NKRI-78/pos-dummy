@@ -42,7 +42,7 @@
             <div class="hidden lg:block navbar-c flex-1 rounded-md py-4 my-4 ml-12 mr-12">
                 <div class="container mx-auto flex justify-around items-center">
                     <a href="<?= base_url() ?>" class="<?=$uri->getSegment(1) === 'term-and-condition' ? ' font-bold text-white' : 'text-white' ?>">Cart (<?= $cartCount ?>)</a>
-                    <a href="<?= base_url() ?>about-us" class="<?=$uri->getSegment(1) === 'about-us' ? ' font-bold text-white' : 'text-white' ?>">My Orders</a>
+                    <a href="<?= base_url('/tracking') ?>" class="<?=$uri->getSegment(1) === 'about-us' ? ' font-bold text-white' : 'text-white' ?>">My Orders</a>
                 </div>
             </div>
 

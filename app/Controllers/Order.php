@@ -27,6 +27,30 @@ class Order extends BaseController
         ]);
     }
 
+    public function tracking() 
+    {
+        $client = new Client();
+        $response = $client->request('POST', 'https://api-hp3ki.inovatiftujuh8.com/api/v1/admin/order-pos');
+
+        $data = json_decode($response->getBody(), true);
+
+        $totalPrice = $data["data"]["order"]["total_price"];
+
+        $products = $data["data"]["products"];
+
+        $session = session();
+        
+        $payment = $session->get('payment');
+        $courier = $session->get('courier');
+
+        return view('order/tracking', [
+            "products" => $products,
+            "total_price" => $totalPrice,
+            "payment" => $payment,
+            "courier" => $courier
+        ]);
+    }
+
     public function removeCart()
     {
         $catId = $this->request->getPost('cat_id');
